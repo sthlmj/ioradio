@@ -30,7 +30,7 @@ public class MainActivity extends Activity
         gridView.setAdapter(new MyAdapter(this));
 
         /**
-         * Adding clickable maybe work some more on the clickable
+         * Adding clickable maybe work some more on the clickable. Kolla upp mActivity och skapa nästa aktivitet efter att man har klickat på ett aktivitet
          *
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
