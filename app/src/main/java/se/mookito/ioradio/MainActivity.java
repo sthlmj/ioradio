@@ -30,7 +30,7 @@ public class MainActivity extends Activity
         gridView.setAdapter(new MyAdapter(this));
 
         /**
-         * Adding clickable
+         * Adding clickable maybe work some more on the clickable
          *
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
