@@ -31,15 +31,18 @@ public class MainActivity extends Activity
 
         /**
          * Adding clickable maybe work some more on the clickable. Kolla upp mActivity och skapa nästa aktivitet efter att man har klickat på ett aktivitet
-         *
+         */
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(mActivity, ActivityToCall.class);
-                mActivity.startActivity(i);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id)
+            {
+                // this 'mActivity' parameter is Activity object, you can send the current activity.
+                Intent i = new Intent(MainActivity.this, AndroidMediaPlayer.class);
+                MainActivity.this.startActivity(i);
             }
         });
+
         /**
          * End of clickable
          */
