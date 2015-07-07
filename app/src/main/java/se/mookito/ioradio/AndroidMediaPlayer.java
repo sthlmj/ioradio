@@ -25,7 +25,7 @@ public class AndroidMediaPlayer extends Activity {
     private int forwardTime = 2000, backwardTime = 2000;
     private Handler durationHandler = new Handler();
     private SeekBar seekbar;
-    private String STREAM_URL ="http://112.121.150.133:8210";
+    private String STREAM_URL ="http://208.53.164.181:80";
     private MediaPlayer mPlayer;
     private ImageButton button_pause;
     private ImageButton button_play;
