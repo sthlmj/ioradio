@@ -30,7 +30,7 @@ public class MainActivity extends Activity
         gridView.setAdapter(new MyAdapter(this));
 
         /**
-         * Adding clickable maybe work some more on the clickable. Kolla upp mActivity och skapa nästa aktivitet efter att man har klickat på ett aktivitet
+         * Clickable
          */
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -39,7 +39,15 @@ public class MainActivity extends Activity
             {
                 // this 'mActivity' parameter is Activity object, you can send the current activity.
                 Intent i = new Intent(MainActivity.this, AndroidMediaPlayer.class);
-                MainActivity.this.startActivity(i);
+                /**
+                 * http://stackoverflow.com/questions/31163202/start-an-activity-non-static-method-cannot-be-referenced-from-a-static-context
+                 * This below here works also.
+                 * MainActivity.this.startActivity(i);
+                 *
+                 * Get context from view before calling startActivity()
+                 * v.getContext().startActivity(i);
+                 */
+                startActivity(i);
             }
         });
 
@@ -49,8 +57,9 @@ public class MainActivity extends Activity
 
     }
 
-
-
+    /**
+     * Begin adapter.
+     */
     private class MyAdapter extends BaseAdapter
     {
         private List<Item> items = new ArrayList<Item>();
