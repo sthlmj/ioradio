@@ -1,11 +1,14 @@
 package se.mookito.ioradio;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -16,12 +19,17 @@ import android.widget.TextView;
 
 public class AndroidMediaPlayer extends Activity {
 
-    private MediaPlayer mediaPlayer;
+//    private MediaPlayer mediaPlayer;
     public TextView songName, duration;
     private double timeElapsed = 0, finalTime = 0;
     private int forwardTime = 2000, backwardTime = 2000;
     private Handler durationHandler = new Handler();
     private SeekBar seekbar;
+    private String STREAM_URL ="http://112.121.150.133:8210";
+    private MediaPlayer mPlayer;
+    private ImageButton button_pause;
+    private ImageButton button_play;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +40,50 @@ public class AndroidMediaPlayer extends Activity {
 
         //initialize views
         initializeViews();
+
+        button_pause = (ImageButton) findViewById(R.id.media_pause);
+        button_play = (ImageButton) findViewById(R.id.media_play);
+
+        mPlayer = new MediaPlayer();
+
+        /**
+         * Stream URL Play Button
+         */
+        button_play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    mPlayer.reset();
+                    mPlayer.setDataSource(STREAM_URL);
+                    mPlayer.prepareAsync();
+                    mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                        @Override
+                        public void onPrepared(MediaPlayer mp) {
+                            mp.start();
+                        }
+                    });
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        /**
+         * Stream URL Pause Button
+         */
+        button_pause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPlayer.pause();
+            }
+        });
     }
 
     public void initializeViews(){
         songName = (TextView) findViewById(R.id.songName);
-        mediaPlayer = MediaPlayer.create(this, R.raw.sample_song);
-        finalTime = mediaPlayer.getDuration();
+ //       mediaPlayer = MediaPlayer.create(this, R.raw.sample_song);
+ //       finalTime = mediaPlayer.getDuration();
         duration = (TextView) findViewById(R.id.songDuration);
         seekbar = (SeekBar) findViewById(R.id.seekBar);
         songName.setText("Sample_Song.mp3");
@@ -46,19 +92,20 @@ public class AndroidMediaPlayer extends Activity {
         seekbar.setClickable(false);
     }
 
+    /**
     // play mp3 song
     public void play(View view) {
         mediaPlayer.start();
         timeElapsed = mediaPlayer.getCurrentPosition();
         seekbar.setProgress((int) timeElapsed);
         durationHandler.postDelayed(updateSeekBarTime, 100);
-    }
+    } **/
 
     //handler to change seekBarTime
     private Runnable updateSeekBarTime = new Runnable() {
         public void run() {
             //get current position
-            timeElapsed = mediaPlayer.getCurrentPosition();
+//            timeElapsed = mediaPlayer.getCurrentPosition();
             //set seekbar progress
             seekbar.setProgress((int) timeElapsed);
             //set time remaing
@@ -70,10 +117,12 @@ public class AndroidMediaPlayer extends Activity {
         }
     };
 
+    /**
     // pause mp3 song
     public void pause(View view) {
         mediaPlayer.pause();
     }
+     **/
 
     // go forward at forwardTime seconds
     public void forward(View view) {
@@ -82,7 +131,7 @@ public class AndroidMediaPlayer extends Activity {
             timeElapsed = timeElapsed - backwardTime;
 
             //seek to the exact second of the track
-            mediaPlayer.seekTo((int) timeElapsed);
+//            mediaPlayer.seekTo((int) timeElapsed);
         }
     }
 }
