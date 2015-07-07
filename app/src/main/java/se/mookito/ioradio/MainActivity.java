@@ -69,12 +69,16 @@ public class MainActivity extends Activity
         {
             inflater = LayoutInflater.from(context);
 
-            items.add(new Item("POP", R.drawable.nature1));
-            items.add(new Item("ROCK", R.drawable.nature2));
-            items.add(new Item("JAZZ", R.drawable.tree1));
-            items.add(new Item("HIPHOP", R.drawable.nature3));
-            items.add(new Item("RNB", R.drawable.tree2));
-            items.add(new Item("HOUSE", R.drawable.cat));
+            items.add(new Item("Alternative", R.drawable.idobi_radio));
+            items.add(new Item("Easy Listening", R.drawable.cool93));
+            items.add(new Item("Top 40", R.drawable.brasilhits));
+            items.add(new Item("Dancehall", R.drawable.party_vibe));
+            items.add(new Item("Talk", R.drawable.alexa_jones));
+            items.add(new Item("Pop", R.drawable.antena1));
+            items.add(new Item("Pop", R.drawable.lasmas));
+            items.add(new Item("News", R.drawable.adomfm));
+            items.add(new Item("Public Radio", R.drawable.fusion));
+            items.add(new Item("Jazz", R.drawable.abc));
         }
 
         @Override
