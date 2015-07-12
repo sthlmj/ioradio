@@ -23,16 +23,9 @@ public class MainActivity extends Activity {
          */
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+
                 // this 'mActivity' parameter is Activity object, you can send the current activity.
                 Intent i = new Intent(MainActivity.this, AndroidMediaPlayer.class);
-                /**
-                 * http://stackoverflow.com/questions/31163202/start-an-activity-non-static-method-cannot-be-referenced-from-a-static-context
-                 * This below here works also.
-                 * MainActivity.this.startActivity(i);
-                 *
-                 * Get context from view before calling startActivity()
-                 * v.getContext().startActivity(i);
-                 */
                 startActivity(i);
             }
         });
