@@ -24,11 +24,16 @@ public class MainActivity extends Activity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
-                // this 'mActivity' parameter is Activity object, you can send the current activity.
-                Intent i = new Intent(MainActivity.this, AndroidMediaPlayer.class);
+                //send intent to Media Player activity
+                Intent i = new Intent(getApplicationContext(), AndroidMediaPlayer.class);
+
+                //pass index number
+                i.putExtra("id", position);
                 startActivity(i);
             }
         });
+
+
 
         /**
          * End of clickable
