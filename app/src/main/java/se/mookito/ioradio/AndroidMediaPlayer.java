@@ -13,9 +13,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 
-/**
- * Created by Mook on 2015-07-01.
- */
 
 public class AndroidMediaPlayer extends Activity {
 

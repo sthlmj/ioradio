@@ -10,12 +10,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * Created by Mook on 2015-07-12.
- */
-
-
 /**
  * Begin adapter.
  */
