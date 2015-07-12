@@ -3,12 +3,15 @@ package se.mookito.ioradio;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import android.app.Activity;
+import android.content.Intent;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -35,6 +38,16 @@ public class AndroidMediaPlayer extends Activity {
         //set the layout of the Activity
         setContentView(R.layout.mediaplayer_view);
 
+        //Get intent data
+        Intent i = getIntent();
+
+        //Selected image id
+        int position = i.getExtras().getInt("id");
+        MyAdapter myAdapter = new MyAdapter(this);
+
+        //Set image id
+        ImageView imageView = (ImageView) findViewById(R.id.mp3Image);
+        imageView.setImageResource(myAdapter.items.get(position).drawableId);
         //initialize views
         initializeViews();
 

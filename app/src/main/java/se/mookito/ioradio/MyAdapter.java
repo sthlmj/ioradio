@@ -14,7 +14,7 @@ import java.util.List;
  * Begin adapter.
  */
 public class MyAdapter extends BaseAdapter {
-    private List<Item> items = new ArrayList<Item>();
+    public List<Item> items = new ArrayList<Item>();
     private LayoutInflater inflater;
 
     public MyAdapter(Context context) {
@@ -70,7 +70,7 @@ public class MyAdapter extends BaseAdapter {
         return v;
     }
 
-    private class Item {
+    public class Item {
         final String name;
         final int drawableId;
 
